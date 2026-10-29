@@ -118,7 +118,11 @@ def test_alteradora_duplica(w):
 
 def test_alteradora_strings_del_yaml():
     tm, _ = load("alteradora.yaml")
-    assert len(tm.strings) == 4 and all(len(s) >= 5 for s in tm.strings)
+    assert sorted(len(s) for s in tm.strings) == [5, 6, 7, 8]
+    assert any(s.startswith("b") for s in tm.strings) and any("aa" in s or "bb" in s for s in tm.strings)
+    for s in tm.strings:
+        r = simulate(tm, s)
+        assert r["accepted"] and r["final_tape"] == f"{s}#{s}"
 
 
 def test_catedratico_incompleta_rechaza_las_3():

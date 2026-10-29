@@ -64,4 +64,4 @@ delta:
     output: {final_state: '4', mem_cache_value: '', tape_output: 'b', tape_displacement: L}
   - params: {initial_state: '4', mem_cache_value: '', tape_input: ''}
     output: {final_state: '5', mem_cache_value: '', tape_output: '', tape_displacement: R}
-simulation_strings: [ababa, aabba, bbabb, abbab]
+simulation_strings: [babba, aaabba, bbaabab, abbbaabb]
