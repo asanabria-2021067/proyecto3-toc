@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 from parser import ValidationError, parse_machine
-from simulator import simulate
+from simulator import check_max_steps, simulate
 
 app = FastAPI(title="Simulador de Maquinas de Turing")
 app.add_middleware(
@@ -39,6 +39,10 @@ def validate(req: ValidateReq):
 
 @app.post("/run")
 def run(req: RunReq):
+    try:
+        check_max_steps(req.max_steps)
+    except ValueError as e:
+        return JSONResponse({"ok": False, "errors": [str(e)]}, status_code=400)
     try:
         tm, warnings = parse_machine(req.yaml)
     except ValidationError as e:

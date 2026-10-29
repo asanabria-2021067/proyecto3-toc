@@ -1,6 +1,15 @@
 from model import BLANK, Configuration, Step, Tape, show
 
 
+MAX_STEPS_MIN, MAX_STEPS_MAX = 1, 100000
+
+
+def check_max_steps(n):
+    if not MAX_STEPS_MIN <= n <= MAX_STEPS_MAX:
+        raise ValueError(f"max_steps debe estar entre {MAX_STEPS_MIN} y {MAX_STEPS_MAX} (recibido {n})")
+    return n
+
+
 def simulate(tm, cadena, max_steps=1000):
     result = {"input": cadena, "accepted": False, "reason": "", "final_tape": "", "steps": []}
 

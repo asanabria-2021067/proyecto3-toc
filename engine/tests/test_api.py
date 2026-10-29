@@ -29,6 +29,14 @@ def test_run_max_steps():
     assert "límite de pasos" in j["results"][0]["reason"]
 
 
+def test_run_max_steps_fuera_de_rango_400():
+    for n in (0, -5, 100001):
+        r = client.post("/run", json={"yaml": YAML, "max_steps": n})
+        assert r.status_code == 400 and "max_steps" in r.json()["errors"][0]
+    assert client.post("/run", json={"yaml": YAML, "max_steps": 100000}).status_code == 200
+    assert client.post("/run", json={"yaml": YAML, "max_steps": 1}).status_code == 200
+
+
 def test_run_invalido_400():
     r = client.post("/run", json={"yaml": "x: 1"})
     assert r.status_code == 400 and not r.json()["ok"]

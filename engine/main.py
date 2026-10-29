@@ -3,7 +3,7 @@ import sys
 
 from model import show
 from parser import ValidationError, parse_machine
-from simulator import simulate
+from simulator import check_max_steps, simulate
 
 
 def summary(tm, warnings):
@@ -25,11 +25,18 @@ def fmt(t):
     return f"d({q},{show(c)},{show(a)}) = ({q2},{show(c2)},{show(w)},{m})"
 
 
+def max_steps_arg(text):
+    try:
+        return check_max_steps(int(text))
+    except ValueError as e:
+        raise argparse.ArgumentTypeError(str(e))
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser(description="Simulador de Maquinas de Turing")
     ap.add_argument("archivo")
-    ap.add_argument("--max-steps", type=int, default=1000)
+    ap.add_argument("--max-steps", type=max_steps_arg, default=1000)
     ap.add_argument("--cadena", help="simular solo esta cadena")
     args = ap.parse_args()
 
