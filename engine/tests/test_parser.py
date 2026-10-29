@@ -59,3 +59,37 @@ def test_dash_es_blank():
     assert BLANK in tm.tape_alphabet and w == []
 
 
+def test_estado_inicial_inexistente():
+    assert "inicial" in errors_of(yml(OK).replace("initial: 0", "initial: 9"))
+
+
+def test_estado_final_inexistente():
+    assert "final '9'" in errors_of(yml(OK, final="9"))
+
+
+def test_estado_de_delta_inexistente():
+    assert "estado '7'" in errors_of(yml(OK.replace("final_state: 1", "final_state: 7")))
+
+
+def test_desplazamiento_invalido():
+    assert "desplazamiento" in errors_of(yml(OK.replace("R", "X")))
+
+
+def test_simbolo_fuera_de_cinta():
+    assert "fuera del alfabeto" in errors_of(yml(OK.replace("tape_output: a", "tape_output: z")))
+
+
+def test_duplicada():
+    assert "duplicada" in errors_of(yml(OK + "\n" + OK))
+
+
+def test_campos_faltantes():
+    assert "falta el campo 'delta'" in errors_of("q_states: {q_list: [0], initial: 0, final: 0}\nalphabet: [a]\ntape_alphabet: [a]")
+    assert "faltan campos" in errors_of(yml("  - params: {initial_state: 0}\n    output: {final_state: 1}"))
+
+
+def test_reporta_todos_los_errores():
+    bad = OK.replace("final_state: 1", "final_state: 7").replace("R", "X")
+    with pytest.raises(ValidationError) as e:
+        parse_machine(yml(bad, final="9"))
+    assert len(e.value.errors) >= 3
