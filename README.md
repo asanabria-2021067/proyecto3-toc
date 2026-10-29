@@ -41,3 +41,29 @@ transicion, si se pasa de `max_steps` (default 1000) o si la cinta termina toda 
 - Cadena con simbolos fuera del alfabeto de cinta: `accepted: false`, `reason` empieza con `error:` y `steps: []`; las demas cadenas se simulan normal.
 - Ejemplo completo: `engine/sample_run.json`.
 
+## Maquinas
+
+### reconocedora.yaml - a^n b^n c^n (n >= 1)
+El cache guarda el simbolo que se busca marcar (`b` o `c`).
+
+| Estado | Que hace |
+|---|---|
+| 0 | Inicio de ronda: marca la `a` mas a la izquierda con X, pone cache=`b`, va a 1. Si ve `Y`, ya no hay `a`: pasa a 3. |
+| 1 | Avanza a la derecha buscando el simbolo del cache. Con cache=`b`: salta `a`,`Y`; al hallar `b` la marca `Y` y cambia cache=`c`. Con cache=`c`: salta `b`,`Z`; al hallar `c` la marca `Z`, limpia cache y pasa a 2. |
+| 2 | Regresa a la izquierda hasta la `X` mas a la derecha y vuelve a 0. |
+| 3 | Verifica que solo queden `Y`/`Z` hasta el blank. |
+| 4 | Final (acepta). |
+
+### alteradora.yaml - w -> w#w sobre {a,b}
+El cache lleva cada simbolo de w hasta el final de la copia. Marca originales copiados como `X` (a) / `Y` (b).
+
+| Estado | Que hace |
+|---|---|
+| 0 | Recorre w a la derecha; al blank escribe `#` y pasa a 3. |
+| 3 | Regresa a la izquierda hasta el blank inicial y pasa a 1. |
+| 1 | Salta `X`/`Y`; en la primera `a`/`b` sin copiar la marca (`X`/`Y`), la guarda en el cache y pasa a 2. Si ve `#`, ya copio todo: pasa a 4. |
+| 2 | Lleva el cache a la derecha hasta el primer blank, escribe ahi el simbolo del cache y vuelve a 3. |
+| 4 | Restaura `X`->`a`, `Y`->`b` yendo a la izquierda; al blank inicial va a 5. |
+| 5 | Final (acepta). |
+
+`ejemplo_catedratico.yaml` reconoce w#w; esta **reconstruido**, reemplazar por el texto exacto del enunciado si difiere.
