@@ -82,3 +82,45 @@ def test_pasos_no_comparten_cinta():
     assert r["steps"][0]["tape"] == ["a", "a"] and r["steps"][2]["tape"] == ["b", "b"]
 
 
+# ---- maquinas del proyecto ----
+from pathlib import Path
+
+import pytest
+
+MACHINES = Path(__file__).resolve().parents[2] / "machines"
+
+
+def load(name):
+    return parse_machine((MACHINES / name).read_text(encoding="utf-8"))
+
+
+@pytest.mark.parametrize("w,ok", [("aabbcc", True), ("aaabbbccc", True), ("aabbbcc", False), ("aabcc", False),
+                                  ("abc", True), ("", False), ("abcabc", False), ("cba", False)])
+def test_reconocedora(w, ok):
+    tm, warnings = load("reconocedora.yaml")
+    assert warnings == []
+    assert simulate(tm, w)["accepted"] is ok
+
+
+def test_reconocedora_strings_del_yaml():
+    tm, _ = load("reconocedora.yaml")
+    assert [simulate(tm, s)["accepted"] for s in tm.strings] == [True, True, False, False]
+    assert all(len(s) >= 5 for s in tm.strings)
+
+
+@pytest.mark.parametrize("w", ["ababa", "aabba", "bbabb", "abbab", "", "a", "bbbbbbbb"])
+def test_alteradora_duplica(w):
+    tm, warnings = load("alteradora.yaml")
+    assert warnings == []
+    r = simulate(tm, w)
+    assert r["accepted"] and r["final_tape"] == f"{w}#{w}"
+
+
+def test_alteradora_strings_del_yaml():
+    tm, _ = load("alteradora.yaml")
+    assert len(tm.strings) == 4 and all(len(s) >= 5 for s in tm.strings)
+
+
+def test_catedratico_strings():
+    tm, _ = load("ejemplo_catedratico.yaml")
+    assert [simulate(tm, s)["accepted"] for s in tm.strings] == [True, False, True, True]
