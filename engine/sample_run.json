@@ -1,0 +1,3479 @@
+{
+ "machine": {
+  "states": [
+   "0",
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "initial": "0",
+  "finals": [
+   "4"
+  ],
+  "alphabet": [
+   "a",
+   "b",
+   "c"
+  ],
+  "tape_alphabet": [
+   null,
+   "a",
+   "b",
+   "c",
+   "X",
+   "Y",
+   "Z"
+  ],
+  "delta": [
+   {
+    "from": [
+     "0",
+     null,
+     "a"
+    ],
+    "to": [
+     "1",
+     "b",
+     "X",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "0",
+     null,
+     "Y"
+    ],
+    "to": [
+     "3",
+     null,
+     "Y",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "1",
+     "b",
+     "a"
+    ],
+    "to": [
+     "1",
+     "b",
+     "a",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "1",
+     "b",
+     "Y"
+    ],
+    "to": [
+     "1",
+     "b",
+     "Y",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "1",
+     "b",
+     "b"
+    ],
+    "to": [
+     "1",
+     "c",
+     "Y",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "1",
+     "c",
+     "b"
+    ],
+    "to": [
+     "1",
+     "c",
+     "b",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "1",
+     "c",
+     "Z"
+    ],
+    "to": [
+     "1",
+     "c",
+     "Z",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "1",
+     "c",
+     "c"
+    ],
+    "to": [
+     "2",
+     null,
+     "Z",
+     "L"
+    ]
+   },
+   {
+    "from": [
+     "2",
+     null,
+     "a"
+    ],
+    "to": [
+     "2",
+     null,
+     "a",
+     "L"
+    ]
+   },
+   {
+    "from": [
+     "2",
+     null,
+     "b"
+    ],
+    "to": [
+     "2",
+     null,
+     "b",
+     "L"
+    ]
+   },
+   {
+    "from": [
+     "2",
+     null,
+     "c"
+    ],
+    "to": [
+     "2",
+     null,
+     "c",
+     "L"
+    ]
+   },
+   {
+    "from": [
+     "2",
+     null,
+     "Y"
+    ],
+    "to": [
+     "2",
+     null,
+     "Y",
+     "L"
+    ]
+   },
+   {
+    "from": [
+     "2",
+     null,
+     "Z"
+    ],
+    "to": [
+     "2",
+     null,
+     "Z",
+     "L"
+    ]
+   },
+   {
+    "from": [
+     "2",
+     null,
+     "X"
+    ],
+    "to": [
+     "0",
+     null,
+     "X",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "3",
+     null,
+     "Y"
+    ],
+    "to": [
+     "3",
+     null,
+     "Y",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "3",
+     null,
+     "Z"
+    ],
+    "to": [
+     "3",
+     null,
+     "Z",
+     "R"
+    ]
+   },
+   {
+    "from": [
+     "3",
+     null,
+     null
+    ],
+    "to": [
+     "4",
+     null,
+     null,
+     "S"
+    ]
+   }
+  ],
+  "strings": [
+   "aabbcc",
+   "aaabbbccc",
+   "aabbbcc",
+   "aabcc"
+  ]
+ },
+ "warnings": [],
+ "results": [
+  {
+   "input": "aabbcc",
+   "accepted": true,
+   "reason": "estado final '4' alcanzado",
+   "final_tape": "XXYYZZ",
+   "steps": [
+    {
+     "i": 0,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "a",
+      "a",
+      "b",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 0,
+     "offset": 0,
+     "id": " [0,B] aabbcc",
+     "transition": null
+    },
+    {
+     "i": 1,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "a",
+      "b",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [1,b] abbcc",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 2,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "a",
+      "b",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "Xa [1,b] bbcc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "a",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 3,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XaY [1,c] bcc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 4,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XaYb [1,c] cc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "b",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 5,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XaY [2,B] bZc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "c"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 6,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "Xa [2,B] YbZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "b"
+      ],
+      "to": [
+       "2",
+       null,
+       "b",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 7,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [2,B] aYbZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 8,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 0,
+     "offset": 0,
+     "id": " [2,B] XaYbZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "a"
+      ],
+      "to": [
+       "2",
+       null,
+       "a",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 9,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [0,B] aYbZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "X"
+      ],
+      "to": [
+       "0",
+       null,
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 10,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [1,b] YbZc",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 11,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXY [1,b] bZc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "Y"
+      ],
+      "to": [
+       "1",
+       "b",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 12,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXYY [1,c] Zc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 13,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "c"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XXYYZ [1,c] c",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "Z"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 14,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXYY [2,B] ZZ",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "c"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 15,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXY [2,B] YZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Z"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 16,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [2,B] YYZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 17,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [2,B] XYYZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 18,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [0,B] YYZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "X"
+      ],
+      "to": [
+       "0",
+       null,
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 19,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXY [3,B] YZZ",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "Y"
+      ],
+      "to": [
+       "3",
+       null,
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 20,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXYY [3,B] ZZ",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       "Y"
+      ],
+      "to": [
+       "3",
+       null,
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 21,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XXYYZ [3,B] Z",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       "Z"
+      ],
+      "to": [
+       "3",
+       null,
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 22,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      null
+     ],
+     "head": 6,
+     "offset": 0,
+     "id": "XXYYZZ [3,B] B",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       "Z"
+      ],
+      "to": [
+       "3",
+       null,
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 23,
+     "state": "4",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      null
+     ],
+     "head": 6,
+     "offset": 0,
+     "id": "XXYYZZ [4,B] B",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       null
+      ],
+      "to": [
+       "4",
+       null,
+       null,
+       "S"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "input": "aaabbbccc",
+   "accepted": true,
+   "reason": "estado final '4' alcanzado",
+   "final_tape": "XXXYYYZZZ",
+   "steps": [
+    {
+     "i": 0,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "a",
+      "a",
+      "a",
+      "b",
+      "b",
+      "b",
+      "c",
+      "c",
+      "c"
+     ],
+     "head": 0,
+     "offset": 0,
+     "id": " [0,B] aaabbbccc",
+     "transition": null
+    },
+    {
+     "i": 1,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "b",
+      "b",
+      "b",
+      "c",
+      "c",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [1,b] aabbbccc",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 2,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "b",
+      "b",
+      "b",
+      "c",
+      "c",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "Xa [1,b] abbbccc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "a",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 3,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "b",
+      "b",
+      "b",
+      "c",
+      "c",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "Xaa [1,b] bbbccc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "a",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 4,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "c",
+      "c",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XaaY [1,c] bbccc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 5,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "c",
+      "c",
+      "c"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XaaYb [1,c] bccc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "b",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 6,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "c",
+      "c",
+      "c"
+     ],
+     "head": 6,
+     "offset": 0,
+     "id": "XaaYbb [1,c] ccc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "b",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 7,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XaaYb [2,B] bZcc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "c"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 8,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XaaY [2,B] bbZcc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "b"
+      ],
+      "to": [
+       "2",
+       null,
+       "b",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 9,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "Xaa [2,B] YbbZcc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "b"
+      ],
+      "to": [
+       "2",
+       null,
+       "b",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 10,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "Xa [2,B] aYbbZcc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 11,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [2,B] aaYbbZcc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "a"
+      ],
+      "to": [
+       "2",
+       null,
+       "a",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 12,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 0,
+     "offset": 0,
+     "id": " [2,B] XaaYbbZcc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "a"
+      ],
+      "to": [
+       "2",
+       null,
+       "a",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 13,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [0,B] aaYbbZcc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "X"
+      ],
+      "to": [
+       "0",
+       null,
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 14,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [1,b] aYbbZcc",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 15,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXa [1,b] YbbZcc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "a",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 16,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXaY [1,b] bbZcc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "Y"
+      ],
+      "to": [
+       "1",
+       "b",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 17,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XXaYY [1,c] bZcc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 18,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 6,
+     "offset": 0,
+     "id": "XXaYYb [1,c] Zcc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "b",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 19,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "c",
+      "c"
+     ],
+     "head": 7,
+     "offset": 0,
+     "id": "XXaYYbZ [1,c] cc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "Z"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 20,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 6,
+     "offset": 0,
+     "id": "XXaYYb [2,B] ZZc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "c"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 21,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XXaYY [2,B] bZZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Z"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 22,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXaY [2,B] YbZZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "b"
+      ],
+      "to": [
+       "2",
+       null,
+       "b",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 23,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXa [2,B] YYbZZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 24,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [2,B] aYYbZZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 25,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [2,B] XaYYbZZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "a"
+      ],
+      "to": [
+       "2",
+       null,
+       "a",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 26,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "a",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [0,B] aYYbZZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "X"
+      ],
+      "to": [
+       "0",
+       null,
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 27,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXX [1,b] YYbZZc",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 28,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXXY [1,b] YbZZc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "Y"
+      ],
+      "to": [
+       "1",
+       "b",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 29,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XXXYY [1,b] bZZc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "Y"
+      ],
+      "to": [
+       "1",
+       "b",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 30,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 6,
+     "offset": 0,
+     "id": "XXXYYY [1,c] ZZc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 31,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 7,
+     "offset": 0,
+     "id": "XXXYYYZ [1,c] Zc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "Z"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 32,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "c"
+     ],
+     "head": 8,
+     "offset": 0,
+     "id": "XXXYYYZZ [1,c] c",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "Z"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 33,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 7,
+     "offset": 0,
+     "id": "XXXYYYZ [2,B] ZZ",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "c"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 34,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 6,
+     "offset": 0,
+     "id": "XXXYYY [2,B] ZZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Z"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 35,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XXXYY [2,B] YZZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Z"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 36,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXXY [2,B] YYZZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 37,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXX [2,B] YYYZZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 38,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [2,B] XYYYZZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 39,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXX [0,B] YYYZZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "X"
+      ],
+      "to": [
+       "0",
+       null,
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 40,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXXY [3,B] YYZZZ",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "Y"
+      ],
+      "to": [
+       "3",
+       null,
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 41,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XXXYY [3,B] YZZZ",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       "Y"
+      ],
+      "to": [
+       "3",
+       null,
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 42,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 6,
+     "offset": 0,
+     "id": "XXXYYY [3,B] ZZZ",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       "Y"
+      ],
+      "to": [
+       "3",
+       null,
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 43,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 7,
+     "offset": 0,
+     "id": "XXXYYYZ [3,B] ZZ",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       "Z"
+      ],
+      "to": [
+       "3",
+       null,
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 44,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z"
+     ],
+     "head": 8,
+     "offset": 0,
+     "id": "XXXYYYZZ [3,B] Z",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       "Z"
+      ],
+      "to": [
+       "3",
+       null,
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 45,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z",
+      null
+     ],
+     "head": 9,
+     "offset": 0,
+     "id": "XXXYYYZZZ [3,B] B",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       "Z"
+      ],
+      "to": [
+       "3",
+       null,
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 46,
+     "state": "4",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Z",
+      "Z",
+      "Z",
+      null
+     ],
+     "head": 9,
+     "offset": 0,
+     "id": "XXXYYYZZZ [4,B] B",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       null
+      ],
+      "to": [
+       "4",
+       null,
+       null,
+       "S"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "input": "aabbbcc",
+   "accepted": false,
+   "reason": "sin transición para (estado=3, caché=B, leído=b)",
+   "final_tape": "XXYYbZZ",
+   "steps": [
+    {
+     "i": 0,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "a",
+      "a",
+      "b",
+      "b",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 0,
+     "offset": 0,
+     "id": " [0,B] aabbbcc",
+     "transition": null
+    },
+    {
+     "i": 1,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "a",
+      "b",
+      "b",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [1,b] abbbcc",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 2,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "a",
+      "b",
+      "b",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "Xa [1,b] bbbcc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "a",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 3,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XaY [1,c] bbcc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 4,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XaYb [1,c] bcc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "b",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 5,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XaYbb [1,c] cc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "b",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 6,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XaYb [2,B] bZc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "c"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 7,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XaY [2,B] bbZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "b"
+      ],
+      "to": [
+       "2",
+       null,
+       "b",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 8,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "Xa [2,B] YbbZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "b"
+      ],
+      "to": [
+       "2",
+       null,
+       "b",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 9,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [2,B] aYbbZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 10,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 0,
+     "offset": 0,
+     "id": " [2,B] XaYbbZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "a"
+      ],
+      "to": [
+       "2",
+       null,
+       "a",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 11,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [0,B] aYbbZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "X"
+      ],
+      "to": [
+       "0",
+       null,
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 12,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [1,b] YbbZc",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 13,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "b",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXY [1,b] bbZc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "Y"
+      ],
+      "to": [
+       "1",
+       "b",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 14,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXYY [1,c] bZc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 15,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XXYYb [1,c] Zc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "b",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 16,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "c"
+     ],
+     "head": 6,
+     "offset": 0,
+     "id": "XXYYbZ [1,c] c",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "Z"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Z",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 17,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z"
+     ],
+     "head": 5,
+     "offset": 0,
+     "id": "XXYYb [2,B] ZZ",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "c"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 18,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXYY [2,B] bZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Z"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 19,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXY [2,B] YbZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "b"
+      ],
+      "to": [
+       "2",
+       null,
+       "b",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 20,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [2,B] YYbZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 21,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [2,B] XYYbZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 22,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [0,B] YYbZZ",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "X"
+      ],
+      "to": [
+       "0",
+       null,
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 23,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXY [3,B] YbZZ",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "Y"
+      ],
+      "to": [
+       "3",
+       null,
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 24,
+     "state": "3",
+     "cache": null,
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "b",
+      "Z",
+      "Z"
+     ],
+     "head": 4,
+     "offset": 0,
+     "id": "XXYY [3,B] bZZ",
+     "transition": {
+      "from": [
+       "3",
+       null,
+       "Y"
+      ],
+      "to": [
+       "3",
+       null,
+       "Y",
+       "R"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "input": "aabcc",
+   "accepted": false,
+   "reason": "sin transición para (estado=1, caché=b, leído=Z)",
+   "final_tape": "XXYZc",
+   "steps": [
+    {
+     "i": 0,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "a",
+      "a",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 0,
+     "offset": 0,
+     "id": " [0,B] aabcc",
+     "transition": null
+    },
+    {
+     "i": 1,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "a",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [1,b] abcc",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 2,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "a",
+      "b",
+      "c",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "Xa [1,b] bcc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "a",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 3,
+     "state": "1",
+     "cache": "c",
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "c",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XaY [1,c] cc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "b"
+      ],
+      "to": [
+       "1",
+       "c",
+       "Y",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 4,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "Z",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "Xa [2,B] YZc",
+     "transition": {
+      "from": [
+       "1",
+       "c",
+       "c"
+      ],
+      "to": [
+       "2",
+       null,
+       "Z",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 5,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "Z",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [2,B] aYZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "Y"
+      ],
+      "to": [
+       "2",
+       null,
+       "Y",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 6,
+     "state": "2",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "Z",
+      "c"
+     ],
+     "head": 0,
+     "offset": 0,
+     "id": " [2,B] XaYZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "a"
+      ],
+      "to": [
+       "2",
+       null,
+       "a",
+       "L"
+      ]
+     }
+    },
+    {
+     "i": 7,
+     "state": "0",
+     "cache": null,
+     "tape": [
+      "X",
+      "a",
+      "Y",
+      "Z",
+      "c"
+     ],
+     "head": 1,
+     "offset": 0,
+     "id": "X [0,B] aYZc",
+     "transition": {
+      "from": [
+       "2",
+       null,
+       "X"
+      ],
+      "to": [
+       "0",
+       null,
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 8,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Z",
+      "c"
+     ],
+     "head": 2,
+     "offset": 0,
+     "id": "XX [1,b] YZc",
+     "transition": {
+      "from": [
+       "0",
+       null,
+       "a"
+      ],
+      "to": [
+       "1",
+       "b",
+       "X",
+       "R"
+      ]
+     }
+    },
+    {
+     "i": 9,
+     "state": "1",
+     "cache": "b",
+     "tape": [
+      "X",
+      "X",
+      "Y",
+      "Z",
+      "c"
+     ],
+     "head": 3,
+     "offset": 0,
+     "id": "XXY [1,b] Zc",
+     "transition": {
+      "from": [
+       "1",
+       "b",
+       "Y"
+      ],
+      "to": [
+       "1",
+       "b",
+       "Y",
+       "R"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}
