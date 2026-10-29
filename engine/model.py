@@ -72,3 +72,34 @@ class Tape:
         return "".join(show(self.cells.get(i)) for i in range(lo, hi + 1))
 
 
+@dataclass
+class Configuration:
+    state: str
+    cache: object
+    tape: Tape
+
+    def id(self):
+        cells, h, _ = self.tape.snapshot()
+        u = "".join(show(x) for x in cells[:h])
+        v = "".join(show(x) for x in cells[h:])
+        return f"{u} [{self.state},{show(self.cache)}] {v}"
+
+
+@dataclass
+class Step:
+    i: int
+    config: Configuration
+    transition: dict = None  # {"from": [q,c,leido], "to": [q,c,escrito,mov]} aplicada para LLEGAR aqui
+
+    def to_dict(self):
+        cells, h, off = self.config.tape.snapshot()
+        return {
+            "i": self.i,
+            "state": self.config.state,
+            "cache": self.config.cache,
+            "tape": cells,
+            "head": h,
+            "offset": off,
+            "id": self.config.id(),
+            "transition": self.transition,
+        }
