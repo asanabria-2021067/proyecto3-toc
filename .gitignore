@@ -4,5 +4,3 @@ __pycache__/
 .venv/
 node_modules/
 dist/
-.claude/
-CLAUDE.md
