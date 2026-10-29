@@ -3,13 +3,30 @@
 Monorepo: `engine/` (motor, CLI, API en Python), `frontend/` (React, Javier), `machines/` (YAML).
 
 ## Uso
+Desde `engine/` (Python 3.10+):
 ```
-cd engine
 pip install -r requirements.txt
-python -m pytest
-python main.py ../machines/reconocedora.yaml [--max-steps N] [--cadena "aabbcc"]
-uvicorn api:app --reload        # http://localhost:8000/docs
 ```
+
+**Tests**
+```
+python -m pytest
+```
+
+**CLI**
+```
+python main.py ../machines/reconocedora.yaml
+python main.py ../machines/alteradora.yaml --cadena "babba"
+python main.py ../machines/reconocedora.yaml --max-steps 500
+```
+Imprime el resumen de la MT y, por cada cadena, las IDs numeradas con la transicion aplicada y ACEPTADA / RECHAZADA con el motivo.
+`--cadena` simula solo esa cadena. `--max-steps` debe estar entre 1 y 100000 (default 1000); fuera de rango la CLI sale con error.
+
+**Backend (API)**
+```
+uvicorn api:app --reload
+```
+Queda en http://localhost:8000 (docs interactivas en `/docs`).
 
 ## Modelo
 MT de una cinta con memoria en el estado: el estado real es el par `[q, cache]`. Una transicion
@@ -20,7 +37,7 @@ transicion, si se pasa de `max_steps` (default 1000) o si la cinta termina toda 
 
 ## API (sin estado, CORS abierto para localhost)
 - `POST /validate` `{yaml}` -> `{ok, machine, warnings, errors}` (siempre 200; `machine` es `null` si hay errores)
-- `POST /run` `{yaml, max_steps?}` -> `{machine, warnings, results}`; si el YAML es invalido: HTTP 400 `{ok: false, errors}`
+- `POST /run` `{yaml, max_steps?}` -> `{machine, warnings, results}`. `max_steps` va de 1 a 100000 (default 1000). YAML invalido o `max_steps` fuera de rango: HTTP 400 `{ok: false, errors}`
 
 `machine`: `{states, initial, finals, alphabet, tape_alphabet, delta, strings}` donde `delta` es una lista de
 `{"from": [q, cache, leido], "to": [q, cache, escrito, mov]}` y blank es `null`.
@@ -66,4 +83,4 @@ El cache lleva cada simbolo de w hasta el final de la copia. Marca originales co
 | 4 | Restaura `X`->`a`, `Y`->`b` yendo a la izquierda; al blank inicial va a 5. |
 | 5 | Final (acepta). |
 
-`ejemplo_catedratico.yaml` reconoce w#w; esta **reconstruido**, reemplazar por el texto exacto del enunciado si difiere.
+`ejemplo_catedratico.yaml` es el ejemplo original del enunciado: esta incompleto a proposito (solo tiene transiciones desde el estado 0), asi que sus 3 cadenas terminan rechazadas por falta de transicion.
