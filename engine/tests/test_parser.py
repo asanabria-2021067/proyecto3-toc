@@ -82,6 +82,16 @@ def test_simbolo_fuera_de_cinta():
     assert "fuera del alfabeto" in errors_of(yml(OK.replace("tape_output: a", "tape_output: z")))
 
 
+def test_cache_fuera_de_cinta():
+    assert "fuera del alfabeto" in errors_of(yml(OK.replace("mem_cache_value: , tape_input", "mem_cache_value: z, tape_input")))
+    assert "fuera del alfabeto" in errors_of(yml(OK.replace("final_state: 1, mem_cache_value: ", "final_state: 1, mem_cache_value: z")))
+
+
+def test_cache_blank_y_de_cinta_validos():
+    tm, _ = parse_machine(yml(OK.replace("final_state: 1, mem_cache_value: ", "final_state: 1, mem_cache_value: a")))
+    assert tm.delta[("0", BLANK, "a")] == ("1", "a", "a", "R")
+
+
 def test_duplicada():
     assert "duplicada" in errors_of(yml(OK + "\n" + OK))
 

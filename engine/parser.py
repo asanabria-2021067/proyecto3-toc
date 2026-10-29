@@ -82,7 +82,7 @@ def parse_machine(yaml_text):
                 errors.append(f"{where}: el estado '{s}' no existe en q_list")
         if mov not in MOVES:
             errors.append(f"{where}: desplazamiento '{mov}' invalido (use L, R o S)")
-        for s in (a, w):
+        for s in (a, w, c, c2):  # cache tambien debe pertenecer al alfabeto de cinta
             if s not in tape_alpha:
                 errors.append(f"{where}: simbolo '{s}' fuera del alfabeto de cinta")
         key = (q, c, a)
