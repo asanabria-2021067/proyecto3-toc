@@ -31,11 +31,14 @@ def errors_of(text):
 
 
 def test_ejemplo_catedratico():
-    tm, warnings = parse_machine((MACHINES / "ejemplo_catedratico.yaml").read_text())
+    tm, warnings = parse_machine((MACHINES / "ejemplo_catedratico.yaml").read_text(encoding="utf-8"))
     assert tm.initial == "0" and tm.finals == {"5"}
     assert BLANK in tm.tape_alphabet
-    assert any("alphabet unido" in w for w in warnings)  # a y b no estan en tape_alphabet
-    assert "aab#aab" in tm.strings
+    assert len(warnings) == 1 and "alphabet unido" in warnings[0]  # a y b no estan en tape_alphabet
+    # cache vacio en params = blank; tape_output vacio = escribe blank
+    assert tm.delta[("0", BLANK, "a")] == ("1", "a", BLANK, "R")
+    assert tm.delta[("0", BLANK, "b")] == ("1", "a", BLANK, "R")
+    assert tm.strings == ["aab#aab", "ab#ab", "abbababa#aba"]
 
 
 def test_null_es_blank_y_normaliza_a_str():

@@ -121,6 +121,10 @@ def test_alteradora_strings_del_yaml():
     assert len(tm.strings) == 4 and all(len(s) >= 5 for s in tm.strings)
 
 
-def test_catedratico_strings():
+def test_catedratico_incompleta_rechaza_las_3():
     tm, _ = load("ejemplo_catedratico.yaml")
-    assert [simulate(tm, s)["accepted"] for s in tm.strings] == [True, False, True, True]
+    for s in tm.strings:
+        r = simulate(tm, s)
+        assert not r["accepted"] and "estado=1" in r["reason"] and "sin transición" in r["reason"]
+        assert len(r["steps"]) == 2  # config inicial + una transicion
+        assert r["final_tape"] == s[1:]  # la primera celda se escribio como blank
