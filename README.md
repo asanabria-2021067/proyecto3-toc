@@ -1,19 +1,88 @@
 # Proyecto 3 - Simulador de Maquinas de Turing (UVG, Teoria de la Computacion)
 
-Monorepo: `engine/` (motor, CLI, API en Python), `frontend/` (React, Javier), `machines/` (YAML).
-
-## Uso
-Desde `engine/` (Python 3.10+):
+## Estructura del proyecto
+Monorepo con tres partes: el motor en Python, la interfaz web y las maquinas de ejemplo.
 ```
+proyecto3-toc/
+├── docker-compose.yml        # levanta backend (8000) y frontend (5175)
+├── engine/                   # motor, CLI y API (Python)
+│   ├── model.py              # modelo de la MT (estados, delta, to_dict)
+│   ├── parser.py             # lee y valida el YAML (errores y advertencias)
+│   ├── simulator.py          # simula cada cadena y genera los pasos / IDs
+│   ├── main.py               # CLI
+│   ├── api.py                # API FastAPI: POST /validate y POST /run
+│   ├── sample_run.json       # ejemplo completo del JSON de resultados
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── tests/                # pytest: parser, simulador, CLI y API
+├── frontend/                 # interfaz web (Vite + React)
+│   ├── index.html
+│   ├── vite.config.js        # proxy /validate y /run hacia el backend
+│   ├── Dockerfile
+│   └── src/
+│       ├── main.jsx          # punto de entrada
+│       ├── App.jsx           # editor YAML, lista de cadenas, tabla delta
+│       ├── api.js            # cliente de la API
+│       ├── styles.css
+│       └── components/
+│           ├── Reproductor.jsx    # control paso a paso, IDs y transicion
+│           ├── Cinta.jsx          # cinta con el cabezal
+│           ├── Diagrama.jsx       # diagrama de estados (Cytoscape)
+│           └── ErrorBoundary.jsx
+└── machines/                 # MTs en YAML (tambien son los ejemplos de la web)
+    ├── reconocedora.yaml
+    ├── alteradora.yaml
+    └── ejemplo_catedratico.yaml
+```
+
+
+## Como correr el programa
+
+Estructura: `engine/` (motor, CLI y API en Python), `frontend/` (interfaz web, Vite + React), `machines/` (MTs en YAML).
+
+### Opcion A: Docker (recomendada)
+Requisito: Docker Desktop abierto. Desde la raiz del proyecto:
+```
+docker compose up -d --build
+```
+- Interfaz web: http://localhost:5175
+- API: http://localhost:8000 (docs interactivas en `/docs`)
+
+Ver logs: `docker compose logs -f`. Apagar: `docker compose down`.
+El codigo esta montado como volumen, asi que los cambios se recargan solos.
+Si el puerto 5175 u 8000 esta ocupado, cambia el lado izquierdo de `ports` en `docker-compose.yml`.
+
+### Opcion B: sin Docker
+Requisitos: Python 3.10+ y Node 18+. Se necesitan **dos terminales**.
+
+Terminal 1 - backend:
+```
+cd engine
 pip install -r requirements.txt
+uvicorn api:app --reload
 ```
+Queda en http://localhost:8000.
 
-**Tests**
+Terminal 2 - frontend:
 ```
-python -m pytest
+cd frontend
+npm install
+npm run dev
 ```
+Abrir http://localhost:5173. Vite redirige `/validate` y `/run` al backend (por defecto `http://localhost:8000`; se cambia con la variable `BACKEND_URL`). Los ejemplos del menu se importan directo de `machines/*.yaml`.
 
-**CLI**
+### Usar la interfaz
+1. Elige un ejemplo en **Cargar ejemplo...** (o **Abrir archivo .yaml**, o edita el YAML en el cuadro de texto).
+2. Ajusta `max_steps` (1 a 100000, default 1000) y presiona **Simular**.
+3. A la izquierda aparecen las cadenas de `simulation_strings` con SI/NO; selecciona una.
+4. El reproductor muestra la cinta con el cabezal, estado, cache, la transicion aplicada y la ID de cada paso. Controles: Reproducir/Pausa, anterior/siguiente, barra de pasos, velocidad y flechas del teclado (izquierda/derecha, Home, End).
+5. El diagrama de estados resalta el estado y la transicion actuales. Cada linea de una arista es `[cache] leido / escrito,mov` (`=`: no cambia el simbolo; `[a→b]`: el cache cambia; `B`: blank).
+6. Debajo del diagrama estan las descripciones instantaneas (clic para saltar a un paso) y al final la tabla de la funcion de transicion.
+
+Para probar otra cadena, edita `simulation_strings` en el YAML y vuelve a simular. Los errores de YAML se muestran en un recuadro rojo.
+
+### CLI (sin interfaz)
+Desde `engine/`:
 ```
 python main.py ../machines/reconocedora.yaml
 python main.py ../machines/alteradora.yaml --cadena "babba"
@@ -22,11 +91,15 @@ python main.py ../machines/reconocedora.yaml --max-steps 500
 Imprime el resumen de la MT y, por cada cadena, las IDs numeradas con la transicion aplicada y ACEPTADA / RECHAZADA con el motivo.
 `--cadena` simula solo esa cadena. `--max-steps` debe estar entre 1 y 100000 (default 1000); fuera de rango la CLI sale con error.
 
-**Backend (API)**
+### Tests
+Desde `engine/` (con las dependencias instaladas):
 ```
-uvicorn api:app --reload
+python -m pytest
 ```
-Queda en http://localhost:8000 (docs interactivas en `/docs`).
+
+### Problemas comunes
+- *"No se pudo conectar con el backend"* en la web: el backend no esta corriendo (Opcion B: terminal 1; Opcion A: `docker compose ps`).
+- Puerto ocupado: cambia el puerto publicado (Docker) o usa `npm run dev -- --port 5180`.
 
 ## Modelo
 MT de una cinta con memoria en el estado: el estado real es el par `[q, cache]`. Una transicion
