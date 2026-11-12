@@ -8,12 +8,15 @@ se simulan varias cadenas y se visualiza cada paso (cinta, cabezal, diagrama de 
 - Javier Alvarado - 24546 
 - Angel Sanabria - 24725
 
+## Video de presentación
+[Ver el video en YouTube](https://youtu.be/8inR8NOfoRA)
+
 ## Contenido
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Cómo correr el programa](#cómo-correr-el-programa)
 - [Modelo](#modelo) · [API](#api-sin-estado-cors-abierto-para-localhost) · [Contrato JSON](#contrato-json-de-cada-resultado-resultsi)
 - [Máquinas](#máquinas)
-- [Guión de presentación](GUION.md)
+- [Video de presentación](#video-de-presentación)
 
 ## Estructura del proyecto
 Monorepo con tres partes: el motor en Python, la interfaz web y las máquinas de ejemplo.
